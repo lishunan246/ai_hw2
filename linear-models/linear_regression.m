@@ -8,5 +8,11 @@ function w = linear_regression(X, y)
 %
 
 % YOUR CODE HERE
+[P,N]=size(X);    
+x=[ones(1,N); X];
+w=ones(P+1,1);
 
+for i=1:500
+    w=w-0.01*x*(w'*x-y)'/(P+1);
+end
 end

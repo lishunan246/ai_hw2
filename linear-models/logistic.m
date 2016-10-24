@@ -9,4 +9,16 @@ function w = logistic(X, y)
 
 % YOUR CODE HERE
 
+[P,N]=size(X);    
+x=[ones(1,N); X];
+w=zeros(P+1,1);
+y(y==-1)=0;
+
+
+for i=1:2000
+    tmp=w'*x;
+    g=1.0./(1+exp(-tmp));
+    w=w-0.01*x*(g-y)'/(P+1);
+end
+
 end
